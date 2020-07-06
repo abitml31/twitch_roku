@@ -186,5 +186,10 @@ function getresponse()
     ? "game_id : ",  m.top.id
     response = request.send()
     m.top.response =  parseJSON(response)
+  else if m.top.api = "getVideo" then
+    request = HttpRequest()
+    request.open(m.top.url, "GET")
+    response = request.send()
+    m.top.response =  parseJSON(response)
   end if
 end function

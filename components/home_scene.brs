@@ -1,6 +1,7 @@
 function init()
 	m.category_screen = m.top.findNode("category_screen")
 	m.content_screen = m.top.findNode("content_screen")
+	m.videoplayer = m.top.findNode("videoplayer")
 
 	initializeVideoPlayer()
 	m.category_screen.observeField("category_selected", "onCategorySelected")
@@ -51,11 +52,39 @@ sub initializeVideoPlayer()
 	m.videoplayer.EnableCookies()
 	m.videoplayer.setCertificatesFile("common:/certs/ca-bundle.crt")
 	m.videoplayer.InitClientCertificates()
-  m.videoplayer.notificationInterval=1
-	m.videoplayer.observeFieldScoped("position", "onPlayerPositionChanged")
-	m.videoplayer.observeFieldScoped("state", "onPlayerStateChanged")
+  ' m.videoplayer.notificationInterval=1
+	' m.videoplayer.observeFieldScoped("position", "onPlayerPositionChanged")
+	' m.videoplayer.observeFieldScoped("state", "onPlayerStateChanged")
 end sub
 
-function onContentSelected()
-
+function onContentSelected(obj)
+	selected_index = obj.getData()
+	m.selected_media = m.content_screen.findNode("content_grid").content.getChild(selected_index)
+	?"Content selected"
+	getVideoUrl(m.selected_media.title)
+	m.category_screen.visible = false
+	m.content_screen.visible = true
 end function
+
+function getVideoUrl(name)
+	m.feed_task = createObject("roSGNode", "http")
+	m.feed_task.observeField("response", "onVideoResponse")
+	? "Video url  : ",  "https://urlfinder31.herokuapp.com/{}".replace("{}",name)
+	m.feed_task.url = "https://urlfinder31.herokuapp.com/{}".replace("{}",name)
+	m.feed_task.api = "getVideo"
+	m.feed_task.control = "RUN"
+end function
+
+function onVideoResponse(obj)
+	response = obj.getData()
+	? "response.streamformat : ",  response.streamformat
+	node = createObject("roSGNode","ContentNode")
+	node.streamformat = response.streamformat
+	node.url = response.url
+	' play Video
+	m.content_screen.visible = false
+	m.videoplayer.visible = true
+	m.videoplayer.setFocus(true)
+	m.videoplayer.content = node
+	m.videoplayer.control = "play"
+end Function
