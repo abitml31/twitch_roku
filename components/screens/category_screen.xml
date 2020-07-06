@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component   name="category_screen"   extends="Group"   initialFocus="category_grid" >
+    <script type="text/brightscript" uri="pkg:/components/screens/category_screen.brs" />
+    <interface>
+
+    <field id="category_selected"
+        type="assocarray"
+        alias="category_grid.itemSelected"
+        />
+    <function name="updateCategories" />
+  </interface>
+    <children>
+        <Label
+        translation="[75, 75]"
+          id="header"
+          color="0xFFFFFF"
+          font="font:LargeBoldSystemFont"
+          text=""/>
+        <PosterGrid
+          id="category_grid"
+          translation="[100,175]"
+          basePosterSize="[300,280]"
+          itemSpacing="[110,110]"
+          numColumns="4"
+          numRows="5"
+          caption1NumLines="1"
+          caption2NumLines="1"
+          />
+    </children>
+</component>

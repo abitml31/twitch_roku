@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name = "http" extends = "task" >
+  <interface>
+    <!-- input fields -->
+    <field id = "url" type = "string" />
+    <field id = "api" type = "string"/>
+    <field id = "id" type = "string"/>
+    <!-- response fields -->
+    <field id = "response" type = "assocarray" />
+    <!-- <field id = "error" type = "string" /> -->
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/tasks/http.brs"/>
+</component>
