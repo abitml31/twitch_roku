@@ -5,6 +5,7 @@
     <field id = "url" type = "string" />
     <field id = "api" type = "string"/>
     <field id = "id" type = "string"/>
+    <field id = "token" type = "string"/>
     <!-- response fields -->
     <field id = "response" type = "assocarray" />
     <!-- <field id = "error" type = "string" /> -->

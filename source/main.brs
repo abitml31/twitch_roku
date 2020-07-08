@@ -22,6 +22,8 @@ sub main()
 	m.port = createObject("roMessagePort")
 	screen = createObject("roSGScreen")
 	screen.setMessagePort(m.port)
+	m.global = screen.getGlobalNode()
+	m.global.addFields({"token": "S"})
 	scene = screen.createScene("home_scene")
 	screen.Show()
 	' this loop is necessary to keep the application open

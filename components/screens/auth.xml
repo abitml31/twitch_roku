@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="auth" extends="Group" >
+  <script type="text/brightscript" uri="pkg:/components/screens/auth.brs" />
+  <interface>
+    <field id="token" type="string" />
+    <function name="setToken" />
+  </interface>
+  <children>
+      <Label
+      translation="[75, 75]"
+        id="header"
+        color="0xFFFFFF"
+        font="font:LargeBoldSystemFont"
+        text=""/>
+  </children>
+</component>

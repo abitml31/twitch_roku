@@ -16,9 +16,13 @@
       translation="[0,0]"
       width="1920"
       height="1080" />
-    <Dialog
+    <auth
+      id="auth"
+      visible="false"
+      translation="[0,0]" /> 
+    <!-- <Dialog
       title="Error"
       visible="false"
-      id="error_dialog" />
+      id="error_dialog" /> -->
   </children>
 </component>

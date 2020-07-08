@@ -173,17 +173,22 @@ function getresponse()
   '     method: "GET",
   '     headers: {"Authorization": "Bearer blvci7k6v7tefgstznuakuu8th1w3a", "client-id": "p9m8mgcm69y049o1kvtt1an2hnennt"},
   ' })
-  if m.top.api = "getGames" then
+  if m.top.api = "initToken" then
+    ' ping the video apiserver
     request = HttpRequest()
     request.open(m.top.url, "GET")
-    request.setRequestHeaders({"Authorization": "Bearer blvci7k6v7tefgstznuakuu8th1w3a", "client-id": "p9m8mgcm69y049o1kvtt1an2hnennt"})
+    response = request.send()
+    m.top.response =  parseJSON(response)
+  else if  m.top.api = "getGames" then
+    request = HttpRequest()
+    request.open(m.top.url, "GET")
+    request.setRequestHeaders({"Authorization": m.top.token, "client-id": "p9m8mgcm69y049o1kvtt1an2hnennt"})
     response = request.send()
     m.top.response =  parseJSON(response)
   else if  m.top.api = "getStreamers" then
     request = HttpRequest()
     request.open(m.top.url, "GET")
-    request.setRequestHeaders({"Authorization": "Bearer blvci7k6v7tefgstznuakuu8th1w3a", "client-id": "p9m8mgcm69y049o1kvtt1an2hnennt"})
-    ? "game_id : ",  m.top.id
+    request.setRequestHeaders({"Authorization": m.top.token, "client-id": "p9m8mgcm69y049o1kvtt1an2hnennt"})
     response = request.send()
     m.top.response =  parseJSON(response)
   else if m.top.api = "getVideo" then
