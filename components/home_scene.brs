@@ -15,7 +15,7 @@ end function
 sub getAuthToken()
 	m.feed_task = createObject("roSGNode", "http")
 	m.feed_task.observeField("response", "initializeAuthToken")
-	m.feed_task.url = "https://urlfinder31.herokuapp.com/"
+	m.feed_task.url = "https://urlfinder31.herokuapp.com/new"
 	m.feed_task.api = "initToken"
 	m.feed_task.control = "RUN"
 end sub
